@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Federal Investigation Bureau | STAKE 5 RP</title>
+  <style>
+    /* ---------- GLOBAL ---------- */
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top, #1c2438 0, #050611 55%, #02030a 100%);
+      color: #f3f6ff;
+      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    a {
+      color: #4ea7ff;
+      text-decoration: none;
+      transition: .25s;
+    }
+
+    a:hover {
+      color: #79c9ff;
+    }
+
+    section {
+      padding: 90px 10% 80px;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ---------- HEADER / NAV ---------- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 12px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(3, 6, 20, 0.92);
+      backdrop-filter: blur(16px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo img {
+      height: 50px;
+      filter: drop-shadow(0 0 8px rgba(0,0,0,0.7));
+    }
+
+    .logo-title {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-title span:first-child {
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    .logo-title span:last-child {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      color: #f3f6ff;
+      opacity: .75;
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(90deg, #4ea7ff, #ffc94e);
+      transition: .25s;
+    }
+
+    nav a:hover {
+      opacity: 1;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* ---------- HERO ---------- */
+    #home {
+      padding-top: 130px;
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(132, 196, 255, 0.5);
+      background: radial-gradient(circle at left, rgba(78,167,255,0.32), transparent 70%);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      color: #c2e0ff;
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-size: 42px;
+      margin: 0 0 6px;
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      opacity: 0.75;
+      margin-bottom: 18px;
+    }
+
+    .hero-text {
+      max-width: 720px;
+      font-size: 15px;
+      opacity: 0.86;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: .25s;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg,#4ea7ff,#1a6bd8);
+      border-color: rgba(255,255,255,0.15);
+      color: #f3f6ff;
+      box-shadow: 0 12px 35px rgba(7, 99, 255, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(7, 99, 255, 0.45);
+    }
+
+    .btn-ghost {
+      background: rgba(255,255,255,0.03);
+      border-color: rgba(255,255,255,0.24);
+      color: #d7e3ff;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .hero-panel {
+      border-radius: 20px;
+      padding: 18px 18px 16px;
+      background:
+        radial-gradient(circle at top, rgba(78,167,255,.18), transparent 60%),
+        linear-gradient(145deg, rgba(7,9,30,0.9), rgba(3,6,20,0.95));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow:
+        0 18px 40px rgba(0,0,0,0.7),
+        0 0 0 1px rgba(255,255,255,0.03);
+      transform: perspective(900px) rotateY(-8deg) rotateX(4deg);
+      transform-origin: center left;
+    }
+
+    .hero-panel h3 {
+      font-size: 14px;
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+
+    .hero-panel small {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      opacity: 0.7;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .mini-card {
+      border-radius: 14px;
+      padding: 10px 12px;
+      background: rgba(8,20,55,0.9);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 11px;
+    }
+
+    .mini-card-title {
+      font-weight: 700;
+      margin-bottom: 3px;
+      font-size: 11px;
+    }
+
+    .mini-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(78,167,255,0.18);
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-top: 4px;
+    }
+
+    /* ---------- GENERIC LAYOUTS ---------- */
+
+    .section-title {
+      margin-top: 0;
+      margin-bottom: 6px;
+      font-size: 24px;
+    }
+
+    .section-sub {
+      margin-top: 0;
+      margin-bottom: 24px;
+      opacity: .8;
+      font-size: 14px;
+      max-width: 760px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: rgba(9, 16, 40, 0.96);
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 18px 18px 16px;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.7);
+      transition: .3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(78,167,255,0.14), transparent 60%);
+      opacity: 0;
+      transition: .3s;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.9);
+    }
+
+    .badge-small {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      opacity: .8;
+      margin-bottom: 6px;
+    }
+
+    /* ---------- STATUTE ---------- */
+
+    #statute {
+      padding-top: 90px;
+    }
+
+    #statute-wrapper {
+      display: grid;
+      grid-template-columns: minmax(220px,260px) minmax(0, 1fr);
+      gap: 32px;
+      align-items: flex-start;
+    }
+
+    #statute-sidebar {
+      position: sticky;
+      top: 100px;
+      background: rgba(6,10,30,0.96);
+      border-radius: 18px;
+      padding: 14px 12px;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.8);
+    }
+
+    #statute-sidebar h3 {
+      margin: 4px 8px 10px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      opacity: .8;
+    }
+
+    #statute-sidebar a {
+      display: block;
+      padding: 6px 10px;
+      border-radius: 10px;
+      font-size: 12px;
+      opacity: .78;
+    }
+
+    #statute-sidebar a:hover {
+      background: rgba(78,167,255,0.14);
+      opacity: 1;
+    }
+
+    #statute-content {
+      background: rgba(6, 10, 30, 0.96);
+      border-radius: 20px;
+      padding: 22px 22px 26px;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 14px 45px rgba(0,0,0,0.9);
+      max-height: 80vh;
+      overflow: auto;
+    }
+
+    #statute-content h2 {
+      font-size: 18px;
+      margin-top: 18px;
+      margin-bottom: 6px;
+    }
+
+    #statute-content h3 {
+      font-size: 15px;
+      margin-top: 14px;
+      margin-bottom: 6px;
+      text-transform: none;
+      letter-spacing: normal;
+    }
+
+    #statute-content p {
+      font-size: 13px;
+      line-height: 1.5;
+      margin: 2px 0 4px;
+      opacity: .94;
+    }
+
+    #statute-content ul {
+      margin: 4px 0 6px 18px;
+      padding-left: 0;
+      font-size: 13px;
+      opacity: .94;
+    }
+
+    #statute-content li {
+      margin-bottom: 2px;
+    }
+
+    .article-label {
+      font-weight: 700;
+    }
+
+    .punishment {
+      font-style: italic;
+      opacity: .9;
+    }
+
+    /* ---------- NEW RECRUITS ---------- */
+
+    #new .card ul {
+      margin: 6px 0 8px 18px;
+      font-size: 14px;
+    }
+
+    #new .card p {
+      font-size: 14px;
+      opacity: .9;
+    }
+
+    /* ---------- FOOTER ---------- */
+
+    footer {
+      padding: 32px 10% 28px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      background: rgba(3,6,18,0.96);
+      font-size: 12px;
+      opacity: .86;
+    }
+
+    footer span {
+      display: block;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+
+    @media (max-width: 900px) {
+      #home {
+        grid-template-columns: minmax(0,1fr);
+      }
+      header {
+        flex-wrap: wrap;
+        gap: 8px 16px;
+      }
+      nav {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+      #statute-wrapper {
+        grid-template-columns: minmax(0,1fr);
+      }
+      #statute-sidebar {
+        position: static;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        padding: 10px;
+      }
+      #statute-sidebar h3 {
+        flex-basis: 100%;
+      }
+      #statute-content {
+        max-height: none;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-title">
+      <span>Stake Roleplay</span>
+      <span>Federal Investigation Bureau</span>
+    </div>
+  </div>
+  <nav>
+    <a href="#home">Головна</a>
+    <a href="#departments">Відділи</a>
+    <a href="#leadership">Керівництво</a>
+    <a href="#statute">Статут</a>
+    <a href="#new">Новим співробітникам</a>
+  </nav>
+</header>
+
+<!-- ---------------- HOME ---------------- -->
+<section id="home">
+  <div>
+    <div class="hero-badge">
+      <span>FIB | Federal Investigation Bureau</span>
+    </div>
+    <h1 class="hero-title">Офіційний портал FIB</h1>
+    <div class="hero-sub">Контррозвідка, кримінальні розслідування, національна безпека штату Сан-Андреас.</div>
+    <p class="hero-text">
+      Federal Investigation Bureau (FIB) — контр-розвідувальна правоохоронна структура, що
+      протидіє тероризму, організованій злочинності, корупції, шпигунству та кіберзлочинності.
+      На цій сторінці зібрано актуальну інформацію про відділи, керівництво, внутрішній статут
+      та умови вступу до лав FIB на проєкті STAKE 5 RP.
+    </p>
+    <div class="hero-buttons">
+      <a href="#statute" class="btn btn-primary">Переглянути Статут</a>
+      <a href="#new" class="btn btn-ghost">Стажування у FIB</a>
+    </div>
+  </div>
+
+  <div class="hero-panel">
+    <small>STRUCTURE OVERVIEW</small>
+    <h3>Структура та ключові напрямки</h3>
+    <div class="hero-grid">
+      <div class="mini-card">
+        <div class="mini-card-title">Criminal Investigation Department</div>
+        <div>Розслідування тяжких злочинів, доказова база, робота під прикриттям.</div>
+        <div class="mini-tag">CID Division</div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-card-title">National Security Branch</div>
+        <div>Тероризм, контррозвідка, кіберзагрози, державна безпека.</div>
+        <div class="mini-tag">NSB</div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-card-title">Hostage Rescue Team</div>
+        <div>Звільнення заручників, штурм, високоризикові операції.</div>
+        <div class="mini-tag">HRT</div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-card-title">Federal National Academy</div>
+        <div>Підготовка кадетів, навчання, атестація майбутніх агентів.</div>
+        <div class="mini-tag">FNA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------------- DEPARTMENTS ---------------- -->
+<section id="departments">
+  <h2 class="section-title">Відділи Federal Investigation Bureau</h2>
+  <p class="section-sub">
+    Структура FIB складається з семи ключових напрямків, кожен з яких відповідає за
+    окремий сегмент безпеки та правопорядку у штаті Сан-Андреас.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="badge-small">CID</div>
+      <h3>Criminal Investigation Department</h3>
+      <p>
+        Аналітично-оперативний підрозділ FIB, який спеціалізується на розслідуванні тяжких
+        злочинів і формуванні доказової бази проти кримінальних угруповань.
+      </p>
+      <ul>
+        <li>Кримінальні розслідування та аналіз злочинної діяльності;</li>
+        <li>Збір, обробка та документування доказів, кейс-файли;</li>
+        <li>Допити свідків, підозрюваних та інформаторів;</li>
+        <li>Робота під прикриттям, технічне спостереження;</li>
+        <li>Співпраця з іншими відділами у боротьбі з ОЗУ.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="badge-small">NSB</div>
+      <h3>National Security Branch</h3>
+      <p>
+        Стратегічний підрозділ, відповідальний за захист національної безпеки штату,
+        протидію тероризму, шпигунству та кіберзагрозам.
+      </p>
+      <ul>
+        <li>Нейтралізація терористичних організацій та загроз;</li>
+        <li>Контррозвідувальна діяльність, виявлення шпигунів;</li>
+        <li>Моніторинг кіберзагроз та витоків даних;</li>
+        <li>Спостереження за небезпечними групами та особами;</li>
+        <li>Співпраця з іншими агентствами штату.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="badge-small">ID</div>
+      <h3>Inspection Department</h3>
+      <p>
+        Внутрішній та зовнішній контроль діяльності як співробітників FIB, так і державних
+        структур, протидія корупції та зловживанням.
+      </p>
+      <ul>
+        <li>Внутрішні розслідування, перевірки, аудит дисципліни;</li>
+        <li>Контроль етичних норм і службових регламентів;</li>
+        <li>Моніторинг зовнішньої діяльності державних органів;</li>
+        <li>Впровадження агентів у держструктури;</li>
+        <li>Робота з кейс-файлами на організації та посадовців.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="badge-small">HRB</div>
+      <h3>Human Resources Bureau</h3>
+      <p>
+        Кадровий та адміністративний відділ FIB, що відповідає за набір, розвиток та
+        супровід персоналу, а також кураторство FNA.
+      </p>
+      <ul>
+        <li>Підбір, навчання, переатестація співробітників;</li>
+        <li>Співбесіди з кандидатами, кадрові рішення;</li>
+        <li>Курація FNA та підготовка майбутніх агентів;</li>
+        <li>Ведення особових справ і ліцензій;</li>
+        <li>Контроль кар’єрного росту та ефективності.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="badge-small">DEA</div>
+      <h3>Drug Enforcement Administration</h3>
+      <p>
+        Підрозділ, що спеціалізується на боротьбі з незаконним обігом наркотичних і
+        психотропних речовин, ліквідації наркокартелів і каналів постачання.
+      </p>
+      <ul>
+        <li>Розслідування діяльності наркокартелів та ОЗУ;</li>
+        <li>Виявлення каналів постачання наркотиків;</li>
+        <li>Затримання осіб, причетних до обігу наркотиків;</li>
+        <li>Спецоперації, рейди та обшуки лабораторій і сховищ;</li>
+        <li>Допити свідків і інформаторів.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="badge-small">HRT</div>
+      <h3>Hostage Rescue Team</h3>
+      <p>
+        Елітний тактичний підрозділ, який залучається у критичних ситуаціях, пов’язаних із
+        заручниками та високим ризиком.
+      </p>
+      <ul>
+        <li>Звільнення заручників та нейтралізація терористів;</li>
+        <li>Антитерористичні операції, високоризикові арешти;</li>
+        <li>Штурм стратегічних об’єктів;</li>
+        <li>Перемовини та навчання перемовників;</li>
+        <li>Підтримка інших відділів під час спецоперацій.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="badge-small">FNA</div>
+      <h3>Federal National Academy</h3>
+      <p>
+        Офіційний навчальний підрозділ FIB. Готує майбутніх агентів, формуючи як
+        професійні навички, так і дисципліну та психологічну стійкість.
+      </p>
+      <ul>
+        <li>Теоретичні заняття з права та тактики;</li>
+        <li>Бойова підготовка, стрільба, робота в групі;</li>
+        <li>Оперативна робота та спостереження;</li>
+        <li>Робота під прикриттям та технічні засоби;</li>
+        <li>Етика, дисципліна, психологічна витривалість.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ---------------- LEADERSHIP ---------------- -->
+<section id="leadership">
+  <h2 class="section-title">Керівництво та старший склад</h2>
+  <p class="section-sub">
+    Керівництво Federal Investigation Bureau забезпечує стратегічне управління, контроль
+    за дотриманням статуту, дисципліни та ефективності усіх відділів.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="badge-small">Director</div>
+      <h3>Director of FIB</h3>
+      <p>Вища посадова особа FIB, несе повну відповідальність за діяльність Бюро.</p>
+      <p><strong>Director —</strong> Tony Walker</p>
+    </div>
+    <div class="card">
+      <div class="badge-small">Deputy</div>
+      <h3>Deputy Director</h3>
+      <p>Заступник директора, координує роботу відділів та реалізацію стратегічних рішень.</p>
+      <p><strong>Deputy Director —</strong> Simon Riley</p>
+    </div>
+    <div class="card">
+      <div class="badge-small">Deputy</div>
+      <h3>Deputy Director</h3>
+      <p>Другий заступник директора, відповідає за внутрішню дисципліну та взаємодію з органами штату.</p>
+      <p><strong>Deputy Director —</strong> Dallas Walker</p>
+    </div>
+    <div class="card">
+      <div class="badge-small">Assistant Director</div>
+      <h3>Assistant Directors (max 3)</h3>
+      <p>Забезпечують управління окремими напрямками, курирують відділи та реалізують політику FIB.</p>
+      <ul>
+        <li>Assistant Director — Simon Riley</li>
+        <li>Assistant Director — Chycha Walker</li>
+        <li>Assistant Director — Elichka Walker</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin-top:40px; margin-bottom:10px;">Старший склад відділів</h3>
+  <div class="grid">
+    <div class="card">
+      <div class="badge-small">CID</div>
+      <h3>Criminal Investigation Department</h3>
+      <p>Head of Department CID — Franchesko Walker<br>
+         Deputy Head of Department CID — Spenser Walker<br>
+         Deputy Head of Department CID — Вакантно</p>
+    </div>
+
+    <div class="card">
+      <div class="badge-small">ID</div>
+      <h3>Inspection Department</h3>
+      <p>Head of Department ID — Bob Miller<br>
+         Deputy Head of Department ID — Hans Liedenberg<br>
+         Deputy Head of Department ID — Вакантно</p>
+    </div>
+
+    <div class="card">
+      <div class="badge-small">NSB</div>
+      <h3>National Security Branch</h3>
+      <p>Head of Department NSB — Awen Katanidze<br>
+         Deputy Head of Department NSB — Ice Katana<br>
+         Deputy Head of Department NSB — Вакантно</p>
+    </div>
+
+    <div class="card">
+      <div class="badge-small">HRB</div>
+      <h3>Human Resources Bureau</h3>
+      <p>Head of Department HRB — Scandal Triger<br>
+         Deputy Head of Department HRB — Вакантно<br>
+         Deputy Head of Department HRB — Вакантно</p>
+    </div>
+
+    <div class="card">
+      <div class="badge-small">HRT</div>
+      <h3>Hostage Rescue Team</h3>
+      <p>Head of Department HRT — Paul Walker<br>
+         Deputy Head of Department HRT — Matic Walker<br>
+         Deputy Head of Department HRT — Вакантно</p>
+    </div>
+
+    <div class="card">
+      <div class="badge-small">DEA</div>
+      <h3>Drug Enforcement Administration</h3>
+      <p>Head of Department DEA — Roman Walker<br>
+         Deputy Head of Department DEA — Вакантно<br>
+         Deputy Head of Department DEA — Вакантно</p>
+    </div>
+  </div>
+</section>
+
+<!-- ---------------- STATUTE ---------------- -->
+<section id="statute">
+  <h2 class="section-title">Внутрішній статут Federal Investigation Bureau</h2>
+  <p class="section-sub">
+    Статут є основним нормативно-правовим документом FIB, що регулює діяльність, повноваження,
+    права, обов’язки та відповідальність співробітників Бюро.
+  </p>
+
+  <div id="statute-wrapper">
+    <aside id="statute-sidebar">
+      <h3>НАВІГАЦІЯ</h3>
+      <a href="#s-intro">Вступ</a>
+      <a href="#s-1">Розділ №1</a>
+      <a href="#s-2">Розділ №2</a>
+      <a href="#s-3">Розділ №3</a>
+      <a href="#s-4">Розділ №4</a>
+      <a href="#s-5">Розділ №5</a>
+      <a href="#s-6">Розділ №6</a>
+      <a href="#s-7">Розділ №7</a>
+      <a href="#s-8">Розділ №8</a>
+      <a href="#s-9">Розділ №9</a>
+      <a href="#s-10">Розділ №10</a>
+      <a href="#s-11">Розділ №11</a>
+      <a href="#s-12">Розділ №12</a>
+      <a href="#s-13">Розділ №13</a>
+      <a href="#s-14">Розділ №14</a>
+      <a href="#s-15">Розділ №15</a>
+    </aside>
+
+    <div id="statute-content">
+      <!-- Вступ -->
+      <h2 id="s-intro">Вступ</h2>
+      <p>
+        Цей внутрішній Статут Federal Investigation Bureau (далі — FIB) є основним
+        нормативно-правовим документом, який регулює діяльність, повноваження, права,
+        обов’язки та відповідальність співробітників Бюро. Документ встановлює
+        організаційну структуру, ієрархію, дисциплінарну систему, кодекс професійної етики,
+        регламенти несення служби, а також порядок взаємодії з іншими державними органами
+        штату Сан-Андреас.
+      </p>
+      <p>
+        Метою цього Статуту є забезпечення ефективного функціонування FIB як правоохоронного
+        органу державного рівня, який діє на засадах законності, професіоналізму,
+        конфіденційності, дисципліни, справедливості та поваги до прав людини.
+      </p>
+
+      <!-- Розділ 1 -->
+      <h2 id="s-1">Розділ №1. Загальні положення</h2>
+      <p><span class="article-label">1.1.</span> Federal Investigation Bureau (FIB) — контр-розвідувальна державна правоохоронна структура, яка служить у ролі федерального кримінального слідчого органу і внутрішньої розвідки (контррозвідки), та діє в межах правового поля штату, здійснює боротьбу з організованою злочинністю, тероризмом, корупцією, шпигунством і загрозами національній безпеці.</p>
+      <p><span class="article-label">1.2.</span> Девіз: «Вірність, чесність, відвага» (FIB — «Fidelity, Integrity, Bravery»).</p>
+      <p><span class="article-label">1.3.</span> Основною метою FIB є забезпечення захисту суспільства та держави від злочинної діяльності, протидія корупції та гарантування дотримання законів.</p>
+      <p><span class="article-label">1.4.</span> Цілі FIB:</p>
+      <ul>
+        <li>захист конституційного ладу та правопорядку;</li>
+        <li>виявлення та нейтралізація злочинних угруповань;</li>
+        <li>протидія шпигунству, тероризму та кіберзлочинності;</li>
+        <li>співпраця з іншими державними та міжнародними організаціями задля безпеки.</li>
+      </ul>
+      <p><span class="article-label">1.5.</span> Завдання FIB:</p>
+      <ul>
+        <li>проведення оперативно-розшукових дій;</li>
+        <li>збір, аналіз та обробка інформації щодо потенційних загроз;</li>
+        <li>організація і проведення спецоперацій;</li>
+        <li>захист державних службовців та стратегічних об’єктів;</li>
+        <li>виявлення фактів корупції та притягнення винних до відповідальності;</li>
+        <li>контроль за дотриманням законодавства на території держави.</li>
+      </ul>
+      <p><span class="article-label">1.6.</span> FIB діє на підставі Конституції штату Сан-Андреас, чинного законодавства, внутрішніх нормативних актів та міжнародних принципів правоохоронної діяльності.</p>
+      <p><span class="article-label">1.7.</span> Головною метою FIB є захист безпеки держави, запобігання злочинам, протидія корупції, тероризму, організованій злочинності, кіберзлочинності та шпигунству.</p>
+      <p><span class="article-label">1.8.</span> У своїй діяльності FIB керується принципами законності, справедливості, гуманізму, рівності, неупередженості, субординації та професіоналізму.</p>
+      <p><span class="article-label">1.9.</span> FIB має статус самостійного федерального органу, підзвітного уряду штату Сан-Андреас.</p>
+      <p><span class="article-label">1.10.</span> Всі співробітники FIB зобов’язані виконувати службові обов’язки відповідно до цього Статуту, присяги агента та чинних наказів керівництва.</p>
+
+      <!-- Розділ 2 -->
+      <h2 id="s-2">Розділ №2. Організаційна структура та ієрархія</h2>
+      <p><span class="article-label">2.1.</span> Структура FIB складається з центрального управління, функціональних відділів, підрозділів та академії.</p>
+      <p><span class="article-label">2.2.</span> Керівництво FIB здійснює Director, який є вищою посадовою особою Бюро і несе повну відповідальність за його діяльність.</p>
+      <p><span class="article-label">2.3.</span> Ієрархія посад у FIB встановлює порядок підпорядкування, розподілу обов’язків і відповідальності:</p>
+      <p><strong>Керівництво FIB (Leadership Staff):</strong></p>
+      <ul>
+        <li>15. Director</li>
+        <li>14. Deputy Director</li>
+        <li>13. Assistant of Director</li>
+      </ul>
+      <p><strong>Вищий склад (High Staff):</strong></p>
+      <ul>
+        <li>12. Head of Department</li>
+        <li>11. Deputy Head of Department</li>
+      </ul>
+      <p><strong>Основний склад (Agents):</strong></p>
+      <ul>
+        <li>10. Free Agent</li>
+        <li>9. Instructor of Department</li>
+        <li>8. Intelligent Agent</li>
+        <li>7. Analytics Agent</li>
+        <li>6. Secret Agent</li>
+        <li>5. Special Agent</li>
+        <li>4. Agent</li>
+      </ul>
+      <p><strong>Молодший склад (Jr. Agents):</strong></p>
+      <ul>
+        <li>3. Junior Agent</li>
+        <li>2. Agent Assistant</li>
+        <li>1. Trainee</li>
+      </ul>
+      <p><span class="article-label">2.4.</span> Призначення, підвищення або переведення на посаду здійснюється наказом Director FIB на підставі подання керівників відділів або HRB.</p>
+      <p><span class="article-label">2.5.</span> Кожен співробітник зобов’язаний виконувати накази старших за званням та дотримуватись службової субординації. <span class="punishment">Покарання: Сувора догана / Звільнення / Занесення в чорний список.</span></p>
+
+      <!-- Розділ 3 -->
+      <h2 id="s-3">Розділ №3. Відділи та обов’язки</h2>
+
+      <h3>3.1. CID — Criminal Investigation Department</h3>
+      <p>Аналітично-оперативний підрозділ FIB, який спеціалізується на розслідуванні тяжких злочинів та зборі доказової бази проти кримінальних угруповань штату Сан-Андреас.</p>
+      <p><span class="article-label">3.1.1.</span> Основні напрямки та зобов’язання:</p>
+      <ul>
+        <li>проведення кримінальних розслідувань, аналіз злочинної діяльності;</li>
+        <li>збір, обробка та документування доказів, підготовка кейс-файлів;</li>
+        <li>допити свідків, підозрюваних та інформаторів;</li>
+        <li>робота під прикриттям та технічне спостереження;</li>
+        <li>співпраця з іншими відділами FIB у боротьбі з організованою злочинністю.</li>
+      </ul>
+
+      <h3>3.2. NSB — National Security Branch</h3>
+      <p>Стратегічний підрозділ FIB, який відповідає за захист національної безпеки штату Сан-Андреас.</p>
+      <p><span class="article-label">3.2.1.</span> Основні напрямки та зобов’язання:</p>
+      <ul>
+        <li>виявлення та нейтралізація терористичних організацій та загроз;</li>
+        <li>контррозвідувальна діяльність, викриття шпигунів і подвійних агентів;</li>
+        <li>моніторинг кіберзагроз, витоків даних, хакерських атак;</li>
+        <li>спостереження за діяльністю потенційно небезпечних груп;</li>
+        <li>співпраця з іншими органами для запобігання кризам;</li>
+        <li>операції під прикриттям щодо загроз нацбезпеці.</li>
+      </ul>
+
+      <h3>3.3. HRT — Hostage Rescue Team</h3>
+      <p>Елітний тактичний підрозділ FIB, який залучається у критичних ситуаціях, коли на кону життя заручників та безпека мирних жителів.</p>
+      <p><span class="article-label">3.3.1.</span> Основні напрямки та зобов’язання:</p>
+      <ul>
+        <li>звільнення заручників і нейтралізація терористів;</li>
+        <li>проведення антитерористичних операцій та високоризикових арештів;</li>
+        <li>штурм стратегічно важливих об’єктів;</li>
+        <li>проведення перемовин у випадку викрадень/пограбувань;</li>
+        <li>ліцензування, атестація, навчання перемовників.</li>
+      </ul>
+
+      <h3>3.4. ID — Inspection Department</h3>
+      <p>Стратегічний підрозділ FIB, що відповідає за внутрішній та зовнішній контроль діяльності як співробітників Бюро, так і державних структур штату.</p>
+      <p><span class="article-label">3.4.1.</span> Основні напрямки та зобов’язання:</p>
+      <ul>
+        <li>внутрішні розслідування, перевірки, аудит дисципліни;</li>
+        <li>контроль дотримання етичних норм та службових регламентів;</li>
+        <li>моніторинг діяльності державних організацій та їх зв’язків з кримінальними структурами;</li>
+        <li>впровадження агентів у державні органи для збору доказів;</li>
+        <li>створення кейс-файлів на організації та посадових осіб;</li>
+        <li>виявлення корупції, зловживань та витоку секретної інформації;</li>
+        <li>забезпечення прозорості, дисципліни та законності;</li>
+        <li>допити свідків, підозрюваних та інформаторів.</li>
+      </ul>
+
+      <h3>3.5. HRB — Human Resources Bureau</h3>
+      <p>Кадровий та адміністративний відділ FIB, який відповідає за оцінювання, розвиток та виховання майбутніх агентів у FNA.</p>
+      <p><span class="article-label">3.5.1.</span> Основні напрямки та зобов’язання:</p>
+      <ul>
+        <li>підбір, навчання, переатестація та контроль персоналу;</li>
+        <li>проведення відбору та співбесід з кандидатами;</li>
+        <li>курація FNA, навчання стажерів і кадетів;</li>
+        <li>атестація та підвищення кваліфікації співробітників;</li>
+        <li>формування та ведення особових справ;</li>
+        <li>контроль кар’єрного росту та ефективності;</li>
+        <li>видача та продовження ліцензій для співробітників.</li>
+      </ul>
+
+      <h3>3.6. DEA — Drug Enforcement Administration</h3>
+      <p>Підрозділ FIB, що спеціалізується на боротьбі з незаконним обігом наркотиків та психотропних речовин.</p>
+      <p><span class="article-label">3.6.1.</span> Основні напрямки та зобов’язання:</p>
+      <ul>
+        <li>розслідування та ліквідація наркокартелів та ОЗУ;</li>
+        <li>виявлення каналів постачання наркотиків у штат;</li>
+        <li>затримання та арешт осіб, причетних до обігу наркотиків;</li>
+        <li>співпраця з іншими правоохоронними органами;</li>
+        <li>спецоперації, рейди та обшуки лабораторій і сховищ;</li>
+        <li>допити свідків, підозрюваних та інформаторів.</li>
+      </ul>
+
+      <h3>3.7. FNA — Federal National Academy</h3>
+      <p>Офіційний навчальний підрозділ FIB у штаті Сан-Андреас. Основне завдання — підготовка, тренування та виховання майбутніх агентів.</p>
+      <p><span class="article-label">3.7.1.</span> Основні напрямки та зобов’язання:</p>
+      <ul>
+        <li>теоретичні заняття з кримінального та адміністративного права;</li>
+        <li>тактика затримання, бойова підготовка, стрільба;</li>
+        <li>оперативна робота, збір доказів, спостереження;</li>
+        <li>робота під прикриттям та проникнення в ОЗУ;</li>
+        <li>використання технічних засобів (бази даних, зв’язок, дрони тощо);</li>
+        <li>взаємодія з іншими структурами під час спецоперацій;</li>
+        <li>дисципліна, етика та психологічна стійкість.</li>
+      </ul>
+
+      <!-- Розділ 4 -->
+      <h2 id="s-4">Розділ №4. Кодекс професійної етики</h2>
+      <p><span class="article-label">4.1.</span> Кожен агент FIB зобов’язаний діяти згідно із законами штату Сан-Андреас, положеннями Статуту та присягою агента. <span class="punishment">Покарання: Усне попередження / Сувора догана / Звільнення / Занесення в чорний список.</span></p>
+      <p><span class="article-label">4.2.</span> Агент зобов’язаний підтримувати високу культуру поведінки, дисциплінованість, чесність та об’єктивність. <span class="punishment">Покарання: Усне попередження / Штрафні санкції / Сувора догана.</span></p>
+      <p><span class="article-label">4.3.</span> Забороняється розголошення будь-якої службової та внутрішньої інформації, у тому числі з грифом конфіденційності, секретності або держтаємниці. <span class="punishment">Покарання: Сувора догана / Звільнення / Занесення в чорний список.</span></p>
+      <p><span class="article-label">4.4.</span> Агент не має права використовувати службове становище в особистих цілях. <span class="punishment">Покарання: Усне попередження / Сувора догана / Звільнення / Занесення в чорний список.</span></p>
+      <p><span class="article-label">4.5.</span> Забороняється конфлікт інтересів або співпраця з кримінальними угрупованнями. <span class="punishment">Покарання: Сувора догана / Звільнення / Занесення в чорний список.</span></p>
+      <p><span class="article-label">4.6.</span> Агент зобов’язаний утримуватись від дискримінаційних висловлювань і дій. <span class="punishment">Покарання: Усне попередження / Сувора догана / Звільнення / Занесення в чорний список.</span></p>
+      <p><span class="article-label">4.7.</span> Кожен агент повинен дотримуватись субординації, ввічливості та взаємоповаги у колективі. <span class="punishment">Покарання: Усне попередження / Штрафні санкції / Догана / Сувора догана / Звільнення / Занесення в чорний список.</span></p>
+
+      <!-- Розділ 5 -->
+      <h2 id="s-5">Розділ №5. Присяга Агента FIB</h2>
+      <p><span class="article-label">5.1.</span> Будь-який співробітник FIB зобов’язаний скласти присягу під час проходження національної академії FIB або під час працевлаштування у лави FIB при зайнятті будь-якої з посад. <span class="punishment">Покарання: Відправка на перепроходження академії FIB.</span></p>
+      <p><em>“Я, Ім’я Прізвище, агент Federal Investigation Bureau, присягаю на вірність народу штату Сан-Андреас та законам, що його охороняють. Клянусь гідно виконувати службовий обов’язок, захищати права та свободи громадян, дотримуватись принципів честі, справедливості, неупередженості та професійної етики. Зобов’язуюсь не зрадити присягу ні за яких обставин.”</em></p>
+
+      <!-- Розділ 6 -->
+      <h2 id="s-6">Розділ №6. Регламенти служби</h2>
+      <p><span class="article-label">6.1.</span> Службовий час агентів FIB ділиться на денну (10:00–22:00) та нічну (22:00–10:00) зміни. Відхилення від графіку допускається лише за наказом керівництва. <span class="punishment">Покарання: Усне попередження / Сувора догана / Звільнення / Занесення в чорний список.</span></p>
+      <p><span class="article-label">6.2.</span> Кожен агент має право на одну годину перерви під час зміни. Додаткові перерви узгоджуються з керівником; співробітник може бути відкликаний з перерви. <span class="punishment">Покарання: Усне попередження / Сувора догана / Звільнення / Занесення в чорний список.</span></p>
+      <p><span class="article-label">6.3.</span> Забороняється залишати робоче місце без дозволу керівника/заступника відділу або керівництва FIB. <span class="punishment">Покарання: Усне попередження / Догана / Сувора догана / Звільнення / Занесення в чорний список.</span></p>
+      <p><span class="article-label">6.4.</span> Під час виконання службових завдань агент повинен мати при собі посвідчення, засоби зв’язку, табельну зброю та бодікамеру. <span class="punishment">Покарання: Усне попередження / Догана / Сувора догана / Звільнення / Занесення в чорний список.</span></p>
+
+      <h3>6.5. Службовий розпорядок</h3>
+      <p><span class="article-label">6.5.1.</span> Співробітники зобов’язані з’являтися на службу вчасно та у встановленій формі. <span class="punishment">Покарання: Усне попередження / Догана / Звільнення / Занесення в чорний список.</span></p>
+      <p><span class="article-label">6.5.2.</span> Робочий час визначається внутрішнім графіком, затвердженим керівництвом.</p>
+      <p><span class="article-label">6.5.3.</span> Відпустки, відрядження та вихідні узгоджуються згідно з регламентом.</p>
+
+      <h3>6.6. Виконання службових завдань</h3>
+      <p><span class="article-label">6.6.1.</span> Співробітник зобов’язаний сумлінно та професійно виконувати поставлені завдання. <span class="punishment">Покарання: Усне попередження / Догана / Сувора догана / Звільнення / Занесення в чорний список.</span></p>
+      <p><span class="article-label">6.6.2.</span> Використання службових повноважень у особистих цілях заборонено. <span class="punishment">Покарання: Усне попередження / Догана / Сувора догана / Звільнення / Занесення в чорний список.</span></p>
+      <p><span class="article-label">6.6.3.</span> При виконанні спецоперацій співробітник діє згідно з наказом керівника групи, дотримуючись техніки безпеки. <span class="punishment">Покарання: Усне попередження / Догана / Сувора догана / Звільнення / Занесення в чорний список.</span></p>
+      <p><span class="article-label">6.6.4.</span> Заборонено перевищувати повноваження чи застосовувати силу без законних підстав. <span class="punishment">Покарання: Усне попередження / Догана / Сувора догана / Звільнення / Занесення в чорний список.</span></p>
+
+      <h3>6.7. Поведінка під час служби</h3>
+      <p><span class="article-label">6.7.1.</span> Заборонено вживати алкоголь, наркотичні та психотропні речовини під час служби. <span class="punishment">Покарання: Усне попередження / Догана / Сувора догана / Звільнення / Занесення в чорний список.</span></p>
+      <p><span class="article-label">6.7.2.</span> У будь-яких ситуаціях співробітник має зберігати самоконтроль і діяти законно. <span class="punishment">Покарання: Усне попередження / Штрафні санкції / Догана / Сувора догана / Звільнення / Занесення в чорний список.</span></p>
+      <p><span class="article-label">6.7.3.</span> Під час взаємодії з громадянами необхідно дотримуватись етики та професійної ввічливості. <span class="punishment">Покарання: Усне попередження / Штрафні санкції / Догана / Сувора догана / Звільнення / Занесення в чорний список.</span></p>
+      <p><span class="article-label">6.7.4.</span> Конфлікти між співробітниками вирішуються лише у службовому порядку. <span class="punishment">Покарання: Усне попередження / Штрафні санкції / Догана / Сувора догана / Звільнення / Занесення в чорний список.</span></p>
+
+      <h3>6.8. Відповідальність за порушення</h3>
+      <p><span class="article-label">6.8.1.</span> За невиконання або неналежне виконання службових обов’язків співробітник несе дисциплінарну, адміністративну або кримінальну відповідальність.</p>
+      <p><span class="article-label">6.8.2.</span> Порушення регламенту несення служби може призвести до службового розслідування та відсторонення чи звільнення.</p>
+      <p><span class="article-label">6.8.3.</span> У випадках тяжких порушень (корупція, зрада, перевищення повноважень) справа передається до судових органів.</p>
+
+      <!-- Розділ 7 -->
+      <h2 id="s-7">Розділ №7. Дисциплінарна система та система відпрацювань</h2>
+      <p><span class="article-label">7.1.</span> Дисциплінарна система FIB спрямована на підтримання службового порядку та професійної відповідальності.</p>
+      <p><span class="article-label">7.2.</span> Види дисциплінарних стягнень:</p>
+      <ul>
+        <li>усне попередження;</li>
+        <li>штрафні санкції (до 25.000$);</li>
+        <li>догана;</li>
+        <li>сувора догана;</li>
+        <li>відсторонення від служби;</li>
+        <li>відправлення до FNA;</li>
+        <li>пониження у посаді;</li>
+        <li>переатестація;</li>
+        <li>звільнення;</li>
+        <li>звільнення з внесенням у чорний список.</li>
+      </ul>
+      <p><span class="article-label">7.3.</span> Дві суворі догани або три звичайні — автоматичне звільнення з внесенням у чорний список; два усних попередження дорівнюють одній догані. <strong>Виключення:</strong> рішення керівного складу.</p>
+      <p><span class="article-label">7.4.</span> Кожен агент має право оскаржити стягнення протягом 24 годин з моменту його винесення.</p>
+      <p><span class="article-label">7.5.</span> Розгляд оскарження здійснює дисциплінарна комісія (ID) та/або керівний склад.</p>
+      <p><span class="article-label">7.6.</span> Контроль за виконанням відпрацювання та сплатою штрафів здійснюють: Assistant Director, Head of Department (відповідного відділу) та відділ ID.</p>
+      <p><span class="article-label">7.7.</span> Система відпрацювання доган відрізняється залежно від відділу, де служить співробітник.</p>
+      <p><span class="article-label">7.8.</span> Система отримання доган підпорядковується загальній ієрархії FIB: догана, видана старшим за званням, не може бути знята нижчим за званням.</p>
+      <p><span class="article-label">7.9.</span> Head of Department може видавати покарання лише співробітникам свого відділу. Якщо немає керівника, інші керівники можуть видавати покарання та інформувати безпосереднє керівництво.</p>
+      <p><span class="article-label">7.10.</span> Співробітники ID можуть видавати догани працівникам будь-яких відділів. Виключення: співробітники CID отримують догани лише від керівництва свого відділу або керівництва FIB.</p>
+      <p><span class="article-label">7.11.</span> Час на відпрацювання стягнення — 1 робочий тиждень. <span class="punishment">Якщо не відпрацьовано: штраф → догана, догана → сувора догана, сувора догана → звільнення.</span></p>
+      <p><span class="article-label">7.12.</span> Співробітник зі стягненням не має права на підвищення, звільнення, переведення та отримання премій/бонусів.</p>
+      <p><span class="article-label">7.13.</span> Відпрацювання стягнення можливе через:</p>
+      <ul>
+        <li>виконання завдання з системи відпрацювання свого відділу;</li>
+        <li>сплату штрафу, якщо це передбачено.</li>
+      </ul>
+      <p><strong>Примітки:</strong> штрафи лише за дрібні порушення; сплата — на баланс фракції з коментарем «Сплата штрафу»; завдання на відпрацювання може видавати керівний склад.</p>
+
+      <!-- Розділ 8 -->
+      <h2 id="s-8">Розділ №8. Використання техніки та спецзасобів</h2>
+      <p><span class="article-label">8.1.</span> Використання службової техніки, транспорту, озброєння та спецзасобів дозволяється виключно з метою виконання службових обов’язків. <span class="punishment">Покарання: Усне попередження / Штрафні санкції / Догана / Звільнення.</span></p>
+      <p><span class="article-label">8.2.</span> Кожен агент несе персональну відповідальність за збереження та справність виданого майна. <span class="punishment">Покарання: Усне попередження / Штрафні санкції / Догана / Звільнення.</span></p>
+      <p><span class="article-label">8.3.</span> Заборонено використовувати техніку FIB у приватних чи несанкціонованих цілях. <span class="punishment">Покарання: Усне попередження / Штрафні санкції / Догана / Звільнення.</span></p>
+      <p><span class="article-label">8.4.</span> У разі виявлення несправності агент повинен негайно повідомити відповідальний відділ або керівництво. <span class="punishment">Покарання: Усне попередження / Штрафні санкції / Догана / Звільнення.</span></p>
+
+      <!-- Розділ 9 -->
+      <h2 id="s-9">Розділ №9. Взаємодія з іншими структурами</h2>
+      <p><span class="article-label">9.1.</span> FIB координує діяльність з LSPD, LSCSD, USSS, Government, Weazel News, EMS та іншими структурами штату.</p>
+      <p><span class="article-label">9.2.</span> Під час спільних операцій агенти FIB зобов’язані дотримуватись субординації, ввічливості та законності.</p>
+      <p><span class="article-label">9.3.</span> Конфліктні ситуації під час міжвідомчої взаємодії вирішуються тільки через офіційні канали керівництва.</p>
+
+      <!-- Розділ 10 -->
+      <h2 id="s-10">Розділ №10. Переведення, підвищення та звільнення</h2>
+      <p><span class="article-label">10.1.</span> Кожен співробітник має право на переведення до іншого відділу або структури лише за погодженням керівництва FIB. <strong>Примітка:</strong> переведення може погодити керівник/заступник відділу.</p>
+      <p><span class="article-label">10.2.</span> Підвищення здійснюється не частіше ніж раз на 24 години за умови бездоганної служби та позитивної оцінки керівника. <strong>Примітка:</strong> можливі позачергові призначення наказом директора.</p>
+      <p><span class="article-label">10.3.</span> Звільнення можливе за власним бажанням, дисциплінарно або внаслідок порушення службових правил.</p>
+      <p><span class="article-label">10.4.</span> При звільненні агент зобов’язаний здати службове майно, зброю, рацію та документи. <strong>Примітка:</strong> невиконання тягне кримінальну відповідальність. <span class="punishment">Покарання: Сувора догана / Звільнення.</span></p>
+      <p><span class="article-label">10.5.</span> Переведення в/із Weazel News, EMS та Government (крім USSS) неможливе.</p>
+      <p><span class="article-label">10.6.</span> Після здачі амуніції співробітник, що проводить звільнення, зобов’язаний провести обшук та подати звіт у кадровий аудит з фото вмісту рюкзака/сумки/кишень. <span class="punishment">Покарання: Догана / Сувора догана / Звільнення.</span></p>
+      <p><span class="article-label">10.7.</span> При звільненні у співробітника не повинно бути невідпрацьованих стягнень.</p>
+      <p><span class="article-label">10.8.</span> При звільненні співробітника не зі ЗВБ необхідно вказати статтю внутрішнього статуту. <span class="punishment">Покарання: Догана / Сувора догана / Звільнення.</span></p>
+      <p><span class="article-label">10.9.</span> Переведення у FIB відбувається лише з пониженням на 2 посадові звання. <strong>Примітка:</strong> можливі виключення на розсуд керівництва FIB.</p>
+
+      <h3>10.10. Підстави для звільнення співробітника</h3>
+      <p><span class="article-label">10.10.1.</span> Порушення внутрішнього статуту FIB.</p>
+      <p><span class="article-label">10.10.2.</span> Низька робоча активність.</p>
+      <p><span class="article-label">10.10.3.</span> Порушення законодавчої бази штату (статті, що передбачають кримінальну відповідальність).</p>
+      <p><span class="article-label">10.10.4.</span> Систематичні порушення етики та дисципліни.</p>
+      <p><span class="article-label">10.10.5.</span> Спроба зганьбити честь і гідність співробітників FIB.</p>
+      <p><span class="article-label">10.10.6.</span> Невідповідність займаній посаді.</p>
+      <p><span class="article-label">10.10.7.</span> Непроходження переатестації.</p>
+      <p><span class="article-label">10.10.8.</span> Невиконання своїх обов’язків.</p>
+      <p><span class="article-label">10.10.9.</span> Введення в оману керівництва.</p>
+      <p><span class="article-label">10.10.10.</span> Непроходження академії FIB.</p>
+      <p><span class="article-label">10.10.11.</span> Отримання трьох доган та/або двох суворих доган.</p>
+      <p><span class="article-label">10.10.12.</span> Розпалювання конфліктів всередині FIB.</p>
+      <p><span class="article-label">10.10.13.</span> Рапорт на звільнення/переведення.</p>
+      <p><span class="article-label">10.10.14.</span> Розповсюдження будь-якої внутрішньої інформації FIB (внутрішні регламенти, поставки, рейди, інформація з будь-яким грифом секретності тощо).</p>
+      <p><span class="article-label">10.10.15.</span> Виказування публічної незгоди з рішенням керівництва FIB.</p>
+      <p><span class="article-label">10.10.16.</span> Втрата довіри від керівництва FIB (підозріла поведінка, спроби отримати закриту інформацію, дії, що можуть становити загрозу для організації). <strong>Примітка:</strong> за цією статтею звільнення здійснюють лише Director, Deputy Director, Assistant Director FIB.</p>
+      <p><span class="article-label">10.10.17.</span> При переведенні або отриманні рангу на «день блату» співробітник зобов’язаний перебувати у правоохоронній структурі не менше 2 тижнів з моменту прийняття. <span class="punishment">Покарання: Звільнення з внесенням у чорний список.</span></p>
+
+      <!-- Розділ 11 -->
+      <h2 id="s-11">Розділ №11. Регламент про відпустку для співробітників</h2>
+      <p><span class="article-label">11.1.</span> Кожен співробітник має право на оплачувану відпустку. <strong>Примітка:</strong> за кожен відпрацьований тиждень співробітник отримує 3 дні відпустки.</p>
+      <p><span class="article-label">11.2.</span> Заява на відпустку повинна бути погоджена з керівництвом відділу.</p>
+      <p><span class="article-label">11.3.</span> Співробітник має право взяти відпустку понад 3 дні за додаткового погодження з керівництвом.</p>
+
+      <!-- Розділ 12 -->
+      <h2 id="s-12">Розділ №12. Регламент проведення зібрань та шикувань</h2>
+      <p><span class="article-label">12.1.</span> Усі співробітники повинні з’явитися протягом 5 хвилин після оголошення строю/зібрання. <strong>Виняток:</strong> співробітники CID та ID під прикриттям. <strong>Примітка:</strong> у разі запізнення необхідно повідомити в рацію. <span class="punishment">Покарання: Догана / Сувора догана / Звільнення.</span></p>
+      <p><span class="article-label">12.2.</span> Агент зобов’язаний під час шикування стояти у стройовій стійці, не тримаючи в руках предметів/зброї. <span class="punishment">Покарання: Усне попередження / Штрафні санкції / Догана.</span></p>
+      <p><span class="article-label">12.3.</span> Заборонено виходити зі строю чи порушувати порядок без дозволу старшого за званням. <strong>Виняток:</strong> співробітники ID можуть вийти для фіксації порушень. <span class="punishment">Покарання: Усне попередження / Штрафні санкції / Догана.</span></p>
+      <p><span class="article-label">12.4.</span> Заборонено залишати стрій без наказу агента, який його зібрав. <span class="punishment">Покарання: Усне попередження / Штрафні санкції / Догана.</span></p>
+      <p><span class="article-label">12.5.</span> Заборонено розмовляти та ставити запитання іншим агентам у строю без звернення старшого за званням. <span class="punishment">Покарання: Усне попередження / Штрафні санкції / Догана.</span></p>
+      <p><span class="article-label">12.6.</span> Заборонено користуватись мобільним телефоном та іншими особистими речами в строю. <span class="punishment">Покарання: Усне попередження / Штрафні санкції / Догана.</span></p>
+      <p><span class="article-label">12.7.</span> Заборонено діставати та стріляти зі зброї в строю. <strong>Виняток:</strong> напад на стрій. <span class="punishment">Покарання: Усне попередження / Штрафні санкції / Догана.</span></p>
+      <p><span class="article-label">12.8.</span> Заборонено сон у строю. <span class="punishment">Покарання: Усне попередження / Штрафні санкції / Догана.</span></p>
+      <p><span class="article-label">12.9.</span> Заборонено активно жестикулювати у строю. <span class="punishment">Покарання: Усне попередження / Штрафні санкції / Догана.</span></p>
+
+      <!-- Розділ 13 -->
+      <h2 id="s-13">Розділ №13. Регламент відновлення</h2>
+      <p><span class="article-label">13.1.</span> Кожен колишній співробітник може подати заявку на відновлення.</p>
+      <p><span class="article-label">13.2.</span> Кожна заявка розглядається в індивідуальному порядку.</p>
+      <p><span class="article-label">13.3.</span> Заявками на відновлення займається відділ HRB.</p>
+      <p><span class="article-label">13.4.</span> Співробітник не повинен перебувати в розшуку або мати судимість.</p>
+      <p><span class="article-label">13.5.</span> Співробітник не повинен знаходитися у чорному списку FIB.</p>
+      <p><span class="article-label">13.6.</span> Заявка на відновлення подається не пізніше ніж через місяць після звільнення.</p>
+      <p><span class="article-label">13.7.</span> Заявки розглядаються протягом 24 годин; термін може бути подовжений за обґрунтуванням причин.</p>
+
+      <!-- Розділ 14 -->
+      <h2 id="s-14">Розділ №14. Регламент проведення співбесід</h2>
+      <p><span class="article-label">14.1.</span> Співбесіда є обов’язковим етапом перед зарахуванням до лав FIB.</p>
+      <p><span class="article-label">14.2.</span> Метою співбесіди є визначення придатності кандидата до служби.</p>
+      <p><span class="article-label">14.3.</span> Усі кандидати зобов’язані дотримуватись протоколів FIB під час співбесіди.</p>
+      <p><span class="article-label">14.4.</span> Кандидат повинен мати охайний вигляд та ділову форму одягу.</p>
+      <p><span class="article-label">14.5.</span> Кандидат повинен демонструвати дисципліну, повагу та впевненість.</p>
+      <p><span class="article-label">14.6.</span> Кандидат повинен уміти чітко висловлюватися та аргументувати дії.</p>
+      <p><span class="article-label">14.7.</span> Кандидат повинен мати навички аналітичного мислення та логіки.</p>
+      <p><span class="article-label">14.8.</span> Кандидат повинен бути готовим діяти в екстремальних умовах.</p>
+      <p><span class="article-label">14.9.1.</span> Перевірка документів та встановлення особи кандидата.</p>
+      <p><span class="article-label">14.9.2.</span> З’ясування попереднього місця служби та досвіду.</p>
+
+      <!-- Розділ 15 -->
+      <h2 id="s-15">Розділ №15. Заключні положення</h2>
+      <p><span class="article-label">15.1.</span> Цей Статут набирає чинності з моменту його затвердження Director FIB і є обов’язковим для всіх співробітників.</p>
+      <p><span class="article-label">15.2.</span> Будь-які зміни або доповнення до Статуту вносяться лише наказом Director FIB.</p>
+      <p><span class="article-label">15.3.</span> Порушення або невиконання положень Статуту розглядається як дисциплінарне правопорушення.</p>
+      <p><span class="article-label">15.4.</span> Контроль за дотриманням Статуту здійснює керівництво FIB, Internal Department, Head/Deputy Head of Department.</p>
+      <p><span class="article-label">15.5.</span> Ситуації, не врегульовані внутрішнім Статутом FIB, регулюються на розсуд Director FIB та/або керівництва FIB.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ---------------- NEW RECRUITS ---------------- -->
+<section id="new">
+  <h2 class="section-title">Інформація для нових співробітників</h2>
+  <p class="section-sub">
+    Ця секція призначена для кандидатів, які бажають вступити до лав Federal Investigation Bureau
+    на проєкті STAKE 5 RP та пройти стажування відповідно до стандартів FIB.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="badge-small">FNA / HRB</div>
+      <h3>Програма стажування у FIB</h3>
+      <p>Кандидати проходять відбір, співбесіду, навчання в FNA та подальше розподілення по відділах.</p>
+      <p><strong>Критерії для вступу:</strong></p>
+      <ul>
+        <li>Наявність діючих медичних довідок;</li>
+        <li>Наявність військового квитка;</li>
+        <li>Наявність ліцензій Drive D та CDWLW;</li>
+        <li>Відсутність судимостей.</li>
+      </ul>
+      <p>Заповнити заявку на стажування ви можете за посиланням:</p>
+      <p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSc1sqxWws8F0YPnAnlUvAYkdXnpt0DkFEbfXYDZEbf-PTKMmQ/viewform?usp=send_form" target="_blank" class="btn btn-primary">
+          Подати заявку на стажування
+        </a>
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="badge-small">INFO</div>
+      <h3>Що очікує стажера FIB</h3>
+      <ul>
+        <li>Ознайомлення зі Статутом та внутрішніми регламентами;</li>
+        <li>Навчання основам кримінального права та роботи правоохоронних органів;</li>
+        <li>Практичні тренування під наглядом інструкторів FNA;</li>
+        <li>Поступове залучення до роботи відділів під кураторством HRB;</li>
+        <li>Складання присяги агента FIB після успішного завершення програми.</li>
+      </ul>
+      <p>Кандидат, який не відповідає вимогам або порушує Статут уже на етапі стажування, може бути відрахований без права повторного вступу протягом визначеного терміну.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Federal Investigation Bureau | Stake 5 Roleplay</span>
+  <span>© 2025. Внутрішній офіційний ресурс фракції. Заборонено розповсюдження матеріалів без згоди керівництва FIB.</span>
+</footer>
+
+</body>
+</html>
